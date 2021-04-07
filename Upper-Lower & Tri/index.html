@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>Saisie la liste des etudiants</p>
+    <input type="text" id="saisie" />
+    <input type="submit" value="Add" onClick="get()" />
+    <h2> List</h2>
+    <ul class="persons"></ul>
+    <p id="test"></p>
+    <button onclick="Upper()">Upper-Case & Tri</button>
+    <button onclick="Lower()">Lower Case & descending sort</button>
+    <ul class="person"></ul>
+
+
+</body>
+
+<script>
+    let items = [];
+    let html = ``;
+    let myelement = document.querySelector('.persons')
+    let myelemen = document.querySelector('.person')
+
+    const persons = name => html += `<li>${name}</>`
+
+    function get() {
+        getinput = document.getElementById("saisie").value;
+        items.push(getinput);
+         html=``;
+        items.forEach(persons)
+        myelement.innerHTML = html;
+        document.getElementById("saisie").value=``
+    }
+
+   
+    function Upper() {
+        html=``;
+        let test = items.map(name => name.toUpperCase())
+        let newtest = test.sort();
+        newtest.forEach(persons)
+        myelemen.innerHTML = `<h2>New List</h2>`+html;
+    }
+
+    function Lower() {
+        html=``;
+        let test = items.map(name => name.toLowerCase())
+        let newtest = test.sort().reverse();
+        newtest.forEach(persons)
+        myelemen.innerHTML = `<h2>New List</h2>`+html;
+
+    }
+</script>
+
+</html>

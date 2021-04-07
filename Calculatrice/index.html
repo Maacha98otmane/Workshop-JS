@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+
+</head>
+<body>
+    <div class="main">
+		<div class="c-body">
+			<div class="c-minputs">
+				<input id="intop" type="number" class="topin inbox" disabled>
+			<input id="inbottom" type="number" class="bottomin inbox" placeholder="Type Here">
+	</div>
+	<div class="c-row">
+	<div class="c-num">
+			
+			</div>
+			<div class="c-operator">
+		<span class="numb" id="numidplus" onclick="opr('plus')">+</span>
+		<span class="numb" id="numidminus" onclick="opr('minus')">-</span>
+		<span class="numb" id="numiddiv" onclick="opr('divi')">/</span>
+		<span class="numb" id="numidmul" onclick="opr('mul')">*</span>
+		<span class="numb" id="numidans" onclick="ans('answer')">=</span>
+		<span class="numb" id="numidclr" onclick="opr('clr')">c</span>
+		</div>
+	</div>
+		</div>
+	</div>
+</body>
+<script src="js.js" ></script>
+
+</html>

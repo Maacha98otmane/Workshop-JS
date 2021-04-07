@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+
+        <p>Please insert a number</p>
+        <input type="number" id="saisie" />
+        <input type="submit" value="submit" onClick="Numbers()" />
+        <ul class="persons"></ul>
+        <button onclick="sho()">Lister</button>
+    <button onclick="min()">min number</button>
+    <button onclick="max()">max number</button>
+
+    <p id="res"></p>
+
+
+</body>
+
+<script>
+    let items = [];
+    let html = ``;
+    let myelement = document.querySelector('.persons')
+    const num = name => html += `<li>${name}</>`
+    function Numbers() {
+        boxvalue = document.getElementById("saisie").value;
+        items.push(boxvalue);
+    }
+    function sho() {
+        html=``;
+        items.forEach(num)
+        myelement.innerHTML = html;
+    }
+            function min() {
+                document.getElementById("res").innerHTML = Math.min(...items);
+        }
+          function max() {
+                document.getElementById("res").innerHTML = Math.max(...items);
+          }
+
+</script>
+
+</html>
