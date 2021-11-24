@@ -10,6 +10,7 @@ da = [];
 let nextDay = 0;
 let numberList = 0;
 let sortList = ""
+let j =1;
 
 
 
@@ -52,12 +53,18 @@ ready.addEventListener('click', function (event) {
         let ListName = input.value.split(/[\n,]+/).map(arr => arr.trim())
         NomsParticipants = [...ListName]
         numberList = ListName.length;
-        input.value = NomsParticipants.join('\n')
+        
+        var uniqueNames = [];
+        $.each(NomsParticipants, function(i, el){
+            if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+        });
+
+        input.value = uniqueNames.join('\n')
         input.setAttribute('disabled', false)
 
 
 
-        let NomTirage = TirageArray(NomsParticipants)
+        let NomTirage = TirageArray(uniqueNames)
 
 
 
@@ -68,10 +75,10 @@ ready.addEventListener('click', function (event) {
                     display.innerHTML = NomTirage[rand]
                     if (count === NomTirage.length - 1) {
                         if (checkbox.checked == true) {
-                            let index = NomsParticipants.indexOf(NomTirage[rand])
-                            NomsParticipants.splice(index, 1)
-                            input.value = NomsParticipants.join('\n')
-                            console.log(NomsParticipants)
+                            let index = uniqueNames.indexOf(NomTirage[rand])
+                            uniqueNames.splice(index, 1)
+                            input.value = uniqueNames.join('\n')
+                            console.log(uniqueNames)
                         }
 
                         winnerAlert(NomTirage[rand])
@@ -139,13 +146,13 @@ function winnerAlert(name) {
                 
                     sortList += `
                             <tr>
-                            <th scope="row">#</th>
+                            <th scope="row">${j}</th>
                             <td> ${name} </td>
                             <td>${value}</td>
                             <td>${result}</td>
                             </tr>
                             `
-
+                    j +=1;
                     nameList.innerHTML = sortList
                 return
             }
@@ -180,3 +187,23 @@ function Down() {
 
         win.print();    // PRINT THE CONTENTS.
 }
+const Excel = () => {
+
+    var csv = 'Name,Subject,date\n';
+    newArr = []
+    da.map((e) => newArr.push(Object.values(e)));
+    console.log(newArr)
+    newArr.forEach(function (row) {
+      csv += row.join(',');
+      csv += "\n";
+    });
+  
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+    hiddenElement.target = '_blank';
+  
+    //provide the name for the CSV file to be downloaded  
+    hiddenElement.download = 'les sujets de veilles.csv';
+    hiddenElement.click();
+  
+  };
