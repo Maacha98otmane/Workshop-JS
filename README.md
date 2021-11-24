@@ -2,6 +2,9 @@ Workshop javascript :
 
 1-Calculatrice
 
+![Animationsd](https://user-images.githubusercontent.com/63611548/143244422-b68c0284-36f8-4c19-8046-f1d278f20a68.gif)
+
+
 2-Formulaire
 
 3-Min & Max
